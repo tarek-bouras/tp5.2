@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+  <link rel="stylesheet" href="style.css">
+
+  <meta charset="ISO-8859-1">
+  <title> Gestion_Des_Utilisateurs</title>
+  <link rel="stylessheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+</head>
+
+<body>
+	
+	<style>
+		table, th, td {
+  border: 1px solid black;
+}
+	</style>
+	
+  <div class="container mt-2">
+
+    <div class="card">
+
+      <div class="card-header" >
+        <h2 style="color:black;"> Add and delete  </h2>
+
+
+
+      </div>
+      <div class="card-body">
+        <div Class="content1">
+          <div class="col-md-6">
+            <form method="post" th:action="@{add}">
+              <div class="email">
+                <label for="email" class="form-label">Email </label>
+                <input type="email" class="form-control" id="email" name="email">
+              </div>
+              <div class="name">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name">
+              </div>
+
+              <button type="submit" class=" ajouter">Add User </button>
+            </form>
+
+
+
+
+
+
+
+          </div>
+        </div>
+
+
+
+	<hr>
+
+        <h2 >List of Users </h2>
+        <div class="col-md-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th> Id </th>
+                <th> Name </th>
+                <th> Email</th>
+                <th> Actions</th>
+              </tr>
+            </thead>
+
+            <tbody >
+              <tr th:each="user:${list}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.email}"></td>
+                <td><a class="btn effacer" th:href="@{'/delete/'+ ${user.id}}">Delete</a></td>
+              </tr>
+
+
+
+
+
+
+            </tbody>
+
+          </table>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+
+</html>
